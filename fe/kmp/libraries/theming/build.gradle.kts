@@ -14,21 +14,16 @@ kotlin {
         iosX64(),
         iosArm64(),
         iosSimulatorArm64()
-    ).forEach {
-        it.binaries.framework {
-            baseName = "entryPointShared"
-            isStatic = true
-        }
-    }
+    )
 
     sourceSets {
         commonMain.dependencies {
-            implementation(projects.theming)
+            api(compose.material3)
         }
     }
 
     androidLibrary {
-        namespace = "com.ougi.secira"
+        namespace = "com.ougi.secira.theming.theming"
         compileSdk = 36
         minSdk = 30
         compilerOptions.jvmTarget.set(JvmTarget.JVM_25)
