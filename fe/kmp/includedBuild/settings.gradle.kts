@@ -7,5 +7,3 @@ dependencyResolutionManagement {
         }
     }
 }
-
-include(":root-utils")
