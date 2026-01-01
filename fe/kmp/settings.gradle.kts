@@ -1,19 +1,12 @@
 enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
+apply("./common-gradle-scripts/configure-plugins-and-repos.kts")
+
 pluginManagement {
-    repositories {
-        google()
-        gradlePluginPortal()
-        mavenCentral()
-    }
+    includeBuild("includedBuild")
 }
 
-dependencyResolutionManagement {
-    repositories {
-        google()
-        mavenCentral()
-    }
+plugins {
+    id("include-all-modules")
 }
 
 rootProject.name = "secira"
-include(":androidApp")
-include(":shared")
