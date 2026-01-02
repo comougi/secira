@@ -6,32 +6,26 @@ plugins {
     alias(libs.plugins.compose)
     alias(libs.plugins.compose.compiler)
 }
-
 kotlin {
     jvmToolchain(25)
+    compilerOptions.freeCompilerArgs.add("-Xcontext-parameters")
 
-    listOf(
-        iosArm64(),
-        iosSimulatorArm64()
-    ).forEach {
-        it.binaries.framework {
-            baseName = "entryPointShared"
-            isStatic = true
-        }
-    }
+    iosArm64()
+    iosSimulatorArm64()
 
     sourceSets {
         commonMain.dependencies {
-            implementation(projects.di)
-            implementation(projects.theming)
+            implementation(libs.koin.core)
+            implementation(libs.koin.compose)
+
+            implementation(projects.userDomainImpl)
         }
     }
 
     androidLibrary {
-        namespace = "com.ougi.secira"
+        namespace = "com.ougi.secira.di"
         compileSdk = 36
         minSdk = 30
         compilerOptions.jvmTarget.set(JvmTarget.JVM_25)
     }
 }
-
