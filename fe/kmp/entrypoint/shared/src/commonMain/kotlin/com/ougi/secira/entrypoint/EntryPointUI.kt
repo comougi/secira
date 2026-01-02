@@ -1,4 +1,4 @@
-package com.ougi.secira
+package com.ougi.secira.entrypoint
 
 import androidx.compose.runtime.Composable
 import com.ougi.secira.design.theming.SeciraTheme

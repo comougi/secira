@@ -24,7 +24,6 @@ kotlin {
     }
 
     androidLibrary {
-        namespace = "com.ougi.secira"
+        namespace = "com.ougi.secira.entrypoint"
     }
 }
-

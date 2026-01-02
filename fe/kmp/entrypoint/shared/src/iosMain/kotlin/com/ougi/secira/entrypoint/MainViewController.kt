@@ -1,4 +1,4 @@
-package com.ougi.secira
+package com.ougi.secira.entrypoint
 
 import androidx.compose.ui.window.ComposeUIViewController
 
