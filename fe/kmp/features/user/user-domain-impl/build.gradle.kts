@@ -6,6 +6,7 @@ plugins {
 kotlin {
     iosArm64()
     iosSimulatorArm64()
+    androidLibrary.namespace = "com.ougi.secira.userimpl.domain"
 
     sourceSets {
         commonMain.dependencies {
@@ -14,9 +15,5 @@ kotlin {
             implementation(libs.datastore)
             implementation(libs.koin.core)
         }
-    }
-
-    androidLibrary {
-        namespace = "com.ougi.secira.userimpl.domain"
     }
 }

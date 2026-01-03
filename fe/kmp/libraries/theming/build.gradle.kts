@@ -8,15 +8,11 @@ plugins {
 kotlin {
     iosArm64()
     iosSimulatorArm64()
+    androidLibrary.namespace = "com.ougi.secira.theming.theming"
 
     sourceSets {
         commonMain.dependencies {
             api(compose.material3)
         }
     }
-
-    androidLibrary {
-        namespace = "com.ougi.secira.theming.theming"
-    }
 }
-

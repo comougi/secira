@@ -15,15 +15,12 @@ kotlin {
             isStatic = true
         }
     }
+    androidLibrary.namespace = "com.ougi.secira.entrypoint"
 
     sourceSets {
         commonMain.dependencies {
             implementation(projects.di)
             implementation(projects.theming)
         }
-    }
-
-    androidLibrary {
-        namespace = "com.ougi.secira.entrypoint"
     }
 }
