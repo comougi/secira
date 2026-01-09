@@ -1,0 +1,11 @@
+ktor:
+  application:
+    modules:
+      - com.ougi.secira.apigateway.ApplicationKt.module
+  deployment:
+    port: ${PORT:8080}
+db:
+  port: ${DB_PORT:5432}
+  host: ${DB_HOST:localhost}
+  username: ${DB_USERNAME:comougi}
+  password: ${DB_PASSWORD:}
