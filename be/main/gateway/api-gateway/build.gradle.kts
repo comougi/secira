@@ -6,6 +6,7 @@ plugins {
 kotlin.compilerOptions.freeCompilerArgs.add("-XXLanguage:+ExplicitBackingFields")
 
 dependencies {
+    implementation(project(":ktor-utils"))
     implementation(project(":client-network"))
 
     implementation(libs.ktor.server.core)

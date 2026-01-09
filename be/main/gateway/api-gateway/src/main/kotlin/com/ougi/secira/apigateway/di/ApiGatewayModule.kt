@@ -4,6 +4,7 @@ import com.ougi.secira.apigateway.data.db.createDatabase
 import com.ougi.secira.apigateway.data.repostiory.EndpointsRepositoryImpl
 import com.ougi.secira.apigateway.domain.ServiceEndpointsRegistry
 import com.ougi.secira.apigateway.domain.repostiory.EndpointsRepository
+import com.ougi.secira.ktorutils.getStringProperty
 import com.ougi.secira.network.di.createClientNetworkModule
 import io.ktor.server.application.Application
 import org.koin.core.module.dsl.singleOf
@@ -15,10 +16,10 @@ internal fun Application.createApiGatewayModule() =
         includes(createClientNetworkModule())
         single {
             createDatabase(
-                host = environment.config.property("db.host").getString(),
-                port = environment.config.property("db.port").getString(),
-                username = environment.config.property("db.username").getString(),
-                password = environment.config.property("db.password").getString(),
+                host = getStringProperty("db.host"),
+                port = getStringProperty("db.port"),
+                username = getStringProperty("db.username"),
+                password = getStringProperty("db.password"),
             )
         }
         singleOf(::EndpointsRepositoryImpl) bind EndpointsRepository::class
