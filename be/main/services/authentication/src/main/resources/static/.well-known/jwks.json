@@ -1,0 +1,22 @@
+{
+  "keys": [
+    {
+      "kty": "EC",
+      "use": "sig",
+      "alg": "ES512",
+      "kid": "access",
+      "crv": "P-521",
+      "x": "{{ACCESS_PUBLIC_KEY_X}}",
+      "y": "{{ACCESS_PUBLIC_KEY_Y}}"
+    },
+    {
+      "kty": "EC",
+      "use": "sig",
+      "alg": "ES512",
+      "kid": "refresh",
+      "crv": "P-521",
+      "x": "{{REFRESH_PUBLIC_KEY_X}}",
+      "y": "{{REFRESH_PUBLIC_KEY_Y}}"
+    }
+  ]
+}

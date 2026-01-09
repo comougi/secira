@@ -13,17 +13,19 @@ import io.ktor.server.request.path
 import io.ktor.server.request.receiveChannel
 import io.ktor.server.response.respond
 import io.ktor.server.routing.RoutingContext
+import com.ougi.secira.network.utils.HttpHeaders as SeciraHttpHeaders
 
 suspend fun RoutingContext.redirectRequestToInternalNetwork(
-    client: HttpClient,
+    httpClient: HttpClient,
     serviceName: String,
+    includeServiceNameHeader: Boolean
 ) {
     val path = call.request.path()
     val targetBaseUrl = "http://$serviceName"
     val targetUrl = "$targetBaseUrl$path"
 
     val proxyResponse =
-        client.request(targetUrl) {
+        httpClient.request(targetUrl) {
             method = call.request.httpMethod
             call.request
                 .queryParameters
@@ -38,6 +40,7 @@ suspend fun RoutingContext.redirectRequestToInternalNetwork(
                 set(HttpHeaders.XForwardedFor, newXff)
                 set(HttpHeaders.XForwardedProto, call.request.origin.scheme)
                 set(HttpHeaders.XForwardedHost, call.request.host())
+                if (includeServiceNameHeader) set(SeciraHttpHeaders.ServiceName, serviceName)
             }
             setBody(call.receiveChannel())
         }

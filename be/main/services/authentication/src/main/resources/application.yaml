@@ -1,0 +1,15 @@
+ktor:
+  application:
+    modules:
+      - com.ougi.secira.authentication.ApplicationKt.module
+  deployment:
+    port: ${PORT:8080}
+jwt:
+  accessPublicKeyX: ${ACCESS_PUBLIC_KEY_X:AZHz6fSZcEM-riVK3-GlXo6sm_eKyfC4dFEyNUDGZxtWUIcBP_cE3ELKoN-puR6s9f1iKHiygLXSv68tYfKS0Wz0}
+  accessPublicKeyY: ${ACCESS_PUBLIC_KEY_Y:ASEoucx_sx3SRneLLFukRSPTC36Ys_8bV7SLcwGncMKt8JhuPoTPydLkHNnWUTOWySoZHxd_Emy8ibHiG9BoWEIn}
+  accessPrivateKey: ${ACCESS_PRIVATE_KEY:MIHuAgEAMBAGByqGSM49AgEGBSuBBAAjBIHWMIHTAgEBBEIA5OPgDK1WDRpOvDA9By6RNJWTSZYkU1xXJD3h+qn7T/gcF0svbs8guDSkKBRXaWsTNWW5aPp012Ps/gCuNbbCmkehgYkDgYYABAGR8+n0mXBDPq4lSt/hpV6OrJv3isnwuHRRMjVAxmcbVlCHAT/3BNxCyqDfqbkerPX9Yih4soC10r+vLWHyktFs9AEhKLnMf7Md0kZ3iyxbpEUj0wt+mLP/G1e0i3MBp3DCrfCYbj6Ez8nS5BzZ1lEzlskqGR8XfxJsvImx4hvQaFhCJw==}
+  refreshPublicKeyX: ${REFRESH_PUBLIC_KEY_X:AKw1Ags3h1qLbSQuqwKN-c4HrTAcLRUUqSmROYzpbIx5IPTilSSLm58mqO13ft5nlsyIUrhbgvkZ0taPO0yqq_MV}
+  refreshPublicKeyY: ${REFRESH_PUBLIC_KEY_Y:AMkv6VrOxKCTYRzc25PGLjgJv2_ySXHemjEkhZgiw5rGzyp0nKt_xolgJVue0axO92xNFe2dcamtOhUmEkSoUYs2}
+  refreshPrivateKey: ${REFRESH_PRIVATE_KEY:MIHuAgEAMBAGByqGSM49AgEGBSuBBAAjBIHWMIHTAgEBBEIBfntL1E5U/e7BcN06D8KW65Mom9ArAAAs5O0k19+RSCJcYvb3aM1fcwDVSDTgGc8I7DAbDC+TKcwWBjlDFUlBOcuhgYkDgYYABACsNQILN4dai20kLqsCjfnOB60wHC0VFKkpkTmM6WyMeSD04pUki5ufJqjtd37eZ5bMiFK4W4L5GdLWjztMqqvzFQDJL+lazsSgk2Ec3NuTxi44Cb9v8klx3poxJIWYIsOaxs8qdJyrf8aJYCVbntGsTvdsTRXtnXGprToVJhJEqFGLNg==}
+  issuer: ${JWT_ISSUER:http://0.0.0.0:8080}
+service-name: authentication

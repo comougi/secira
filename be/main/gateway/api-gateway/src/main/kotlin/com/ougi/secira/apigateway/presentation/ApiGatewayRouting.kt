@@ -21,8 +21,12 @@ internal fun Application.configureRouting() {
                     ?.let { endpoint ->
                         val serviceName =
                             if (endpoint.isWhiteListedForAuth) endpoint.serviceName
-                            else "auth"
-                        redirectRequestToInternalNetwork(httpClient, serviceName)
+                            else "authentication"
+                        redirectRequestToInternalNetwork(
+                            httpClient = httpClient,
+                            serviceName = serviceName,
+                            includeServiceNameHeader = true,
+                        )
                     } ?: call.respond(HttpStatusCode.NotFound, "Unknown endpoint")
             }
         }
