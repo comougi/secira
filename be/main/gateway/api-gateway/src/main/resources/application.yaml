@@ -9,3 +9,4 @@ db:
   host: ${DB_HOST:localhost}
   username: ${DB_USERNAME:comougi}
   password: ${DB_PASSWORD:}
+service-name: api-gateway
