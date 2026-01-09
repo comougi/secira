@@ -1,5 +1,6 @@
 package com.ougi.secira.apigateway.domain
 
+import com.ougi.secira.apigateway.domain.mapper.toServiceEndpoint
 import com.ougi.secira.apigateway.domain.model.Endpoint
 import com.ougi.secira.apigateway.domain.model.Service
 import com.ougi.secira.apigateway.domain.model.ServiceEndpoint
@@ -23,7 +24,7 @@ internal class ServiceEndpointsRegistry(
                 val endpoints = endpointsRepository.getAllEndpoints()
                 val serviceEndpoints = createServiceEndpoints(services, endpoints)
                 serviceEndpointsCache = serviceEndpoints.associateByTo(HashMap()) { it.path }
-                delay(5.minutes)
+                delay(1.minutes)
             }
         }
     }
@@ -31,17 +32,13 @@ internal class ServiceEndpointsRegistry(
     private fun createServiceEndpoints(
         services: List<Service>,
         endpoints: List<Endpoint>,
-    ): List<ServiceEndpoint> {
-        val serviceNamesById = services.associateBy({ it.id }, { it.name })
-        return endpoints.mapNotNull { endpoint ->
-            serviceNamesById[endpoint.serviceId]
-                ?.let { serviceName ->
-                    ServiceEndpoint(
-                        serviceName = serviceName,
-                        path = endpoint.path,
-                        isWhiteListedForAuth = endpoint.isWhiteListedForAuth,
-                    )
+    ): List<ServiceEndpoint> =
+        services
+            .associateBy({ it.id }, { it.name })
+            .let { serviceNamesById ->
+                endpoints.mapNotNull { endpoint ->
+                    serviceNamesById[endpoint.serviceId]?.run(endpoint::toServiceEndpoint)
                 }
-        }
-    }
+            }
+
 }
